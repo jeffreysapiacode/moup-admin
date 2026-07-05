@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
-import { Login } from './auth/login/login';
+import { Main } from './main/main';
 
 export const routes: Routes = [
-  { path: '', component: Login },
-  { path: 'login', component: Login },
+  { path: '', component: Main },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
