@@ -1,8 +1,8 @@
 <div class="container-fluid no-gutters">
   <div class="row no-gutters">
     <div class="col no-gutters">
-      @for (item of content; track item) {
-        <app-rack-item [label]="item"></app-rack-item>
+      @for (content of contentList; track content.link) {
+        <app-rack-item [content]="content"></app-rack-item>
       }
     </div>
   </div>

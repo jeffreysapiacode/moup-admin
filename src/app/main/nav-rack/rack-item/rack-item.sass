@@ -4,12 +4,18 @@
 .rack-item-container
   background: $nav-rack-item-container-background
   width: 275px
+  transition: background 60ms ease-in
+
+.rack-item-container:hover
+  background: $nav-rack-item-container-hover-background
 
 .rack-item-label
   color: $nav-rack-item-text-color
   letter-spacing: 0.14rem
   font-weight: 700
-  font-size: 1.4rem
+  font-size: 1.3rem
+  transition: color 60ms ease-in
 
 .rack-item-active
-  background: $nav-rack-item-container-background
+  color: $nav-rack-item-text-active-color
+  background: $nav-rack-item-container-active-background

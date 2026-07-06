@@ -8,5 +8,10 @@ import { RackItem } from './rack-item/rack-item';
   styleUrl: './nav-rack.sass',
 })
 export class NavRack {
-  content: any = ['Content', 'Statistics', 'Transcript', 'Settings'];
+  contentList: any = [
+    { label: 'Content', link: 'content' },
+    { label: 'Statistics', link: 'statistics' },
+    { label: 'Transcript', link: 'transcript' },
+    { label: 'Settings', link: 'settings' },
+  ];
 }
