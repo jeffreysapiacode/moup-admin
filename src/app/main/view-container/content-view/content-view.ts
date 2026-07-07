@@ -12,8 +12,4 @@ import { Upload } from './upload/upload';
 export class ContentView {
   createContentOpen: boolean = false;
 
-
-  toggle() {
-    this.createContentOpen = !this.createContentOpen;
-  }
 }
