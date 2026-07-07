@@ -1,1 +1,19 @@
-<p>content-view works!</p>
+<div class="position-relative h-100">
+  <div class="container-fluid h-100 no-gutters">
+    <div class="row h-100 no-gutters">
+      <div class="col h-100 no-gutters pt-3 ps-4">
+        <span class="content-view-title-text">Content</span>
+      </div>
+    </div>
+  </div>
+  <div (click)="toggle()" class="content-view-button-create-content m-3 d-flex justify-content-center align-items-center">
+    <svg class="content-view-button-create-content-svg" width="54" height="54" viewBox="0 0 54 54" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M42.75 29.25H29.25V42.75H24.75V29.25H11.25V24.75H24.75V11.25H29.25V24.75H42.75V29.25Z" fill="#8E8B67" />
+    </svg>
+  </div>
+
+  <div [ngClass]="{'content-view-create-content-container-open': createContentOpen}" class="content-view-create-content-container h-100">
+    <app-upload (createContentOpen)="createContentOpen = false"></app-upload>
+  </div>
+</div>

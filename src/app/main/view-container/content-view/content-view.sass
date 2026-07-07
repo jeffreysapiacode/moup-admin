@@ -1,0 +1,31 @@
+@import '../../../../styles/variables'
+
+.content-view-title-text
+  color: $content-view-title-text-color
+  font-weight: 600
+  font-size: 1.26rem
+  letter-spacing: 0.05rem
+
+.content-view-button-create-content
+  background: $content-view-button-create-content-background
+  position: absolute
+  right: 0
+  bottom: 0
+  width: 60px
+  height: 60px
+  cursor: pointer
+
+.content-view-button-create-content-svg
+  width: 35px
+  height: 35px
+
+
+.content-view-create-content-container
+  position: absolute
+  left: 0
+  top: 0
+  transform: translateX(300%)
+  transition: transform 100ms ease-in
+
+.content-view-create-content-container-open
+  transform: translateX(0)
