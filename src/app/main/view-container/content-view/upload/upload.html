@@ -1,6 +1,6 @@
 <div class="container-fluid no-gutters h-100">
   <div class="content-view-upload-container h-100">
-    <div class="row no-gutters d-flex align-items-center ms-4">
+    <div class="row no-gutters d-flex align-items-center ms-4 pb-3">
       <div class="col no-gutters">
         <span class="content-view-upload-title-text">Upload an episode</span>
       </div>
@@ -12,9 +12,35 @@
         </div>
       </div>
     </div>
-    <div class="row no-gutters">
+    <!-- Title Text Box -->
+    <div class="row no-gutters px-4">
       <div class="col no-gutters">
-
+        <div (click)="titleTextBox.focus()" class="text-box-container px-3 d-flex align-items-center">
+          <input
+            type="text"
+            id="title"
+            class="text-box w-100"
+            [(ngModel)]="title"
+            placeholder="Title"
+            #titleTextBox
+          />
+        </div>
+      </div>
+    </div>
+    <!-- Description Text Area -->
+    <div class="row no-gutters px-4 pt-4">
+      <div class="col no-gutters">
+        <div (click)="descriptionTextBox.focus()" class="text-area-container px-3 d-flex align-items-center">
+          <textarea
+            id="description"
+            class="text-area w-100 py-3"
+            placeholder="Description"
+            rows="5"
+            cols="40"
+            [(ngModel)]="description"
+            #descriptionTextBox>
+          </textarea>
+        </div>
       </div>
     </div>
   </div>
