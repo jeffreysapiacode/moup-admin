@@ -6,8 +6,11 @@
       </div>
       <div class="col-auto no-gutters pe-3 pt-2">
         <div (click)="close()" class="content-view-upload-button-container p-3">
-          <svg class="content-view-upload-button-close-svg" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M43.5423 14.6895L40.3111 11.4583L27.5007 24.2687L14.6902 11.4583L11.459 14.6895L24.2694 27.4999L11.459 40.3103L14.6902 43.5416L27.5007 30.7312L40.3111 43.5416L43.5423 40.3103L30.7319 27.4999L43.5423 14.6895Z" fill="#79786C"/>
+          <svg class="content-view-upload-button-close-svg" width="55" height="55" viewBox="0 0 55 55" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M43.5423 14.6895L40.3111 11.4583L27.5007 24.2687L14.6902 11.4583L11.459 14.6895L24.2694 27.4999L11.459 40.3103L14.6902 43.5416L27.5007 30.7312L40.3111 43.5416L43.5423 40.3103L30.7319 27.4999L43.5423 14.6895Z"
+              fill="#79786C" />
           </svg>
         </div>
       </div>
@@ -20,7 +23,7 @@
             type="text"
             id="title"
             class="text-box w-100"
-            [(ngModel)]="title"
+            [(ngModel)]="formData.title"
             placeholder="Title"
             #titleTextBox
           />
@@ -37,9 +40,59 @@
             placeholder="Description"
             rows="5"
             cols="40"
-            [(ngModel)]="description"
+            [(ngModel)]="formData.description"
             #descriptionTextBox>
           </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters px-4 pt-4">
+      <div class="col no-gutters me-2">
+        <div (click)="fileInputAudio.click()" class="file-upload-container">
+          <input
+            type="file"
+            #fileInputAudio
+            style="display: none"
+            accept=".mp4,.mp3,.m4a"
+            (change)="onAudioFileSelected($event)" />
+          <div class="row h-100 no-gutters d-flex justify-content-between align-items-center">
+            <div class="col no-gutters ms-4">
+              Audio File
+            </div>
+            <div class="col-auto no-gutters">
+              <div class="file-upload-icon-container">
+                <svg class="file-upload-icon-svg" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M15.166 17.3333V34.6667C15.166 37.5398 16.3074 40.2953 18.339 42.327C20.3707 44.3586 23.1262 45.5 25.9993 45.5C28.8725 45.5 31.628 44.3586 33.6597 42.327C35.6913 40.2953 36.8327 37.5398 36.8327 34.6667V14.0833C36.8327 12.0721 36.0337 10.1433 34.6116 8.72111C33.1894 7.29896 31.2606 6.5 29.2493 6.5C27.2381 6.5 25.3093 7.29896 23.8871 8.72111C22.465 10.1433 21.666 12.0721 21.666 14.0833V32.5C21.666 33.6493 22.1226 34.7515 22.9352 35.5641C23.7479 36.3768 24.8501 36.8333 25.9993 36.8333C27.1486 36.8333 28.2508 36.3768 29.0635 35.5641C29.8761 34.7515 30.3327 33.6493 30.3327 32.5V17.3333"
+                    stroke="#BEBAAA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col no-gutters ms-2">
+        <div (click)="fileInputTranscript.click()" class="file-upload-container">
+          <input
+            type="file"
+            #fileInputTranscript
+            style="display: none"
+            accept=".json"
+            (change)="onTranscriptFileSelected($event)" />
+          <div class="row h-100 no-gutters d-flex justify-content-between align-items-center">
+            <div class="col no-gutters ms-4">
+              Transcript File
+            </div>
+            <div class="col-auto no-gutters">
+              <div class="file-upload-icon-container">
+                <svg class="file-upload-icon-svg" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M15.166 17.3333V34.6667C15.166 37.5398 16.3074 40.2953 18.339 42.327C20.3707 44.3586 23.1262 45.5 25.9993 45.5C28.8725 45.5 31.628 44.3586 33.6597 42.327C35.6913 40.2953 36.8327 37.5398 36.8327 34.6667V14.0833C36.8327 12.0721 36.0337 10.1433 34.6116 8.72111C33.1894 7.29896 31.2606 6.5 29.2493 6.5C27.2381 6.5 25.3093 7.29896 23.8871 8.72111C22.465 10.1433 21.666 12.0721 21.666 14.0833V32.5C21.666 33.6493 22.1226 34.7515 22.9352 35.5641C23.7479 36.3768 24.8501 36.8333 25.9993 36.8333C27.1486 36.8333 28.2508 36.3768 29.0635 35.5641C29.8761 34.7515 30.3327 33.6493 30.3327 32.5V17.3333"
+                    stroke="#BEBAAA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgClass } from '@angular/common';
-import { Upload } from './upload/upload';
+import Upload from './upload/upload';
 
 @Component({
   selector: 'app-content-view',
