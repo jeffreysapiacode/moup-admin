@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -11,12 +11,16 @@ import { environment } from '../../../../../environments/environment';
 })
 class Upload {
   @Output() createContentOpen: EventEmitter<boolean> = new EventEmitter();
+  uploading: boolean = false;
+  uploadProgress: number = 0;
   selectedAudioFile: File | undefined;
   selectedTranscriptFile?: File;
   formData = {
     title: '',
     description: '',
   };
+  audioFileLabel: string = 'Audio File';
+  transcriptFileLabel: string = 'Transcript File';
   apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
@@ -30,6 +34,7 @@ class Upload {
     let fileList = element.files;
     if (fileList && fileList.length > 0) {
       this.selectedAudioFile = fileList[0];
+      this.audioFileLabel = this.selectedAudioFile.name;
     }
   }
 
@@ -38,10 +43,12 @@ class Upload {
     let fileList = element.files;
     if (fileList && fileList.length > 0) {
       this.selectedTranscriptFile = fileList[0];
+      this.transcriptFileLabel = this.selectedTranscriptFile.name;
     }
   }
 
   upload() {
+    if (this.uploading) return;
     const formData = new FormData();
     formData.append('title', this.formData.title);
     formData.append('description', this.formData.description);
@@ -51,14 +58,34 @@ class Upload {
       this.selectedTranscriptFile || new Blob(),
       this.selectedTranscriptFile?.name,
     );
-    this.http.post(this.apiUrl + '/content/upload', formData).subscribe({
-      next: (response) => {
-        console.log('Upload successful', response);
-      },
-      error: (error) => {
-        console.error('Upload error', error);
-      },
-    });
+    this.http
+      .post(this.apiUrl + '/content/upload', formData, {
+        reportProgress: true,
+        observe: 'events',
+      })
+      .subscribe({
+        next: (event: HttpEvent<any>) => {
+          switch (event.type) {
+            case HttpEventType.Sent:
+              this.uploading = true;
+              break;
+            case HttpEventType.UploadProgress:
+              if (event.total) {
+                this.uploadProgress = Math.round((100 * event.loaded) / event.total);
+              }
+              break;
+            case HttpEventType.Response:
+              console.log('Upload successful', event.body);
+              break;
+          }
+        },
+        error: (error) => {
+          console.error('Upload error', error);
+        },
+        complete: () => {
+          this.uploading = false;
+        },
+      });
   }
 }
 

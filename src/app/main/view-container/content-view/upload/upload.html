@@ -38,7 +38,7 @@
             id="description"
             class="text-area w-100 py-3"
             placeholder="Description"
-            rows="5"
+            rows="4"
             cols="40"
             [(ngModel)]="formData.description"
             #descriptionTextBox>
@@ -46,18 +46,19 @@
         </div>
       </div>
     </div>
+    <!-- Audio File Selection -->
     <div class="row no-gutters px-4 pt-4">
-      <div class="col no-gutters me-2">
-        <div (click)="fileInputAudio.click()" class="file-upload-container">
+      <div class="col no-gutters mb-3">
+        <div (click)="fileInputAudio.click()" class="file-upload-container me-4">
           <input
             type="file"
             #fileInputAudio
             style="display: none"
             accept=".mp4,.mp3,.m4a"
             (change)="onAudioFileSelected($event)" />
-          <div class="row h-100 no-gutters d-flex justify-content-between align-items-center">
+          <div class="row h-100 no-gutters flex-nowrap d-flex justify-content-between align-items-center">
             <div class="col no-gutters ms-4">
-              Audio File
+              <span class="content-view-upload-label">{{ audioFileLabel }}</span>
             </div>
             <div class="col-auto no-gutters">
               <div class="file-upload-icon-container">
@@ -71,7 +72,8 @@
           </div>
         </div>
       </div>
-      <div class="col no-gutters ms-2">
+      <!-- Transcript File Selection -->
+      <div class="col no-gutters mb-3">
         <div (click)="fileInputTranscript.click()" class="file-upload-container">
           <input
             type="file"
@@ -79,9 +81,9 @@
             style="display: none"
             accept=".json"
             (change)="onTranscriptFileSelected($event)" />
-          <div class="row h-100 no-gutters d-flex justify-content-between align-items-center">
+          <div class="row h-100 no-gutters flex-nowrap d-flex justify-content-between align-items-center">
             <div class="col no-gutters ms-4">
-              Transcript File
+              <span class="content-view-upload-label">{{ transcriptFileLabel }}</span>
             </div>
             <div class="col-auto no-gutters">
               <div class="file-upload-icon-container">
@@ -91,6 +93,37 @@
                     stroke="#BEBAAA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Upload Progress -->
+    <div class="row no-gutters pt-3 d-flex justify-content-end align-items-center">
+      @if (this.uploading) {
+        <div class="col-auto no-gutters me-1">
+          <span class="content-view-upload-progress-text">Uploading 20%</span>
+        </div>
+        <div class="col-auto no-gutters me-4">
+          <div class="content-view-upload-progress-animation">
+            <svg width="60" height="60" viewBox="0 0 50 50">
+              <circle cx="25" cy="25" r="20" fill="none" stroke="#EBE8DC" stroke-width="4"></circle>
+              <circle cx="25" cy="25" r="20" fill="none" stroke="#6A675B" stroke-width="4" stroke-linecap="square" stroke-dasharray="125.6" [attr.stroke-dashoffset]="this.uploadProgress">
+              </circle>
+            </svg>
+          </div>
+        </div>
+      }
+      <div class="col-auto no-gutters">
+        <div (click)="upload()" class="content-view-upload-button px-3 py-2 me-4">
+          <div class="row no-gutters d-flex align-items-center">
+            <div class="col no-gutters ps-3 pe-3">
+              Upload
+            </div>
+            <div class="col no-gutters">
+              <svg class="content-view-upload-button-svg" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M29.2616 42.5623V20.8822L22.3452 27.7985L18.621 23.9413L31.9217 10.6406L45.2224 23.9413L41.4982 27.7985L34.5819 20.8822V42.5623H29.2616ZM10.6406 53.2028V39.9021H15.9609V47.8826H47.8826V39.9021H53.2028V53.2028H10.6406Z" fill="#2F7DAA"/>
+              </svg>
             </div>
           </div>
         </div>
