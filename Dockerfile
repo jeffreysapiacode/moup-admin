@@ -32,3 +32,4 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # ON LOCAL INSTANCE
 # ng build --configuration=production && cp /etc/letsencrypt/archive/admin.moup.io/fullchain1.pem ~/Code/moup-admin && cp /etc/letsencrypt/archive/admin.moup.io/privkey1.pem ~/Code/moup-admin && docker build --platform linux/amd64,linux/arm64 -t moup-admin . && rm ~/Code/moup-admin/fullchain1.pem && rm ~/Code/moup-admin/privkey1.pem && docker run -d --name moup-admin -p 444:444 --restart always moup-admin:latest
+# ng build --configuration=production && cp /etc/letsencrypt/archive/admin.moup.io/fullchain1.pem ~/Code/moup-admin && cp /etc/letsencrypt/archive/admin.moup.io/privkey1.pem ~/Code/moup-admin && docker build --platform linux/amd64,linux/arm64 -t moup-admin . && rm ~/Code/moup-admin/fullchain1.pem && rm ~/Code/moup-admin/privkey1.pem && docker kill moup-admin && docker rm moup-admin && docker run -d --name moup-admin -p 444:444 --restart always moup-admin:latest
