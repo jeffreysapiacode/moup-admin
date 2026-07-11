@@ -102,13 +102,13 @@
     <div class="row no-gutters pt-3 d-flex justify-content-end align-items-center">
       @if (this.uploading) {
         <div class="col-auto no-gutters me-1">
-          <span class="content-view-upload-progress-text">Uploading 20%</span>
+          <span class="content-view-upload-progress-text">Uploading {{this.uploadProgress + '%'}}</span>
         </div>
         <div class="col-auto no-gutters me-4">
           <div class="content-view-upload-progress-animation">
             <svg width="60" height="60" viewBox="0 0 50 50">
               <circle cx="25" cy="25" r="20" fill="none" stroke="#EBE8DC" stroke-width="4"></circle>
-              <circle cx="25" cy="25" r="20" fill="none" stroke="#6A675B" stroke-width="4" stroke-linecap="square" stroke-dasharray="125.6" [attr.stroke-dashoffset]="this.uploadProgress">
+              <circle cx="25" cy="25" r="20" fill="none" stroke="#6A675B" stroke-width="4" stroke-linecap="square" stroke-dasharray="125.6" [attr.stroke-dashoffset]="this.uploadProgressPercent">
               </circle>
             </svg>
           </div>

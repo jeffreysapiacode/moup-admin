@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
@@ -13,6 +13,7 @@ class Upload {
   @Output() createContentOpen: EventEmitter<boolean> = new EventEmitter();
   uploading: boolean = false;
   uploadProgress: number = 0;
+  uploadProgressPercent: number = 0;
   selectedAudioFile: File | undefined;
   selectedTranscriptFile?: File;
   formData = {
@@ -23,7 +24,10 @@ class Upload {
   transcriptFileLabel: string = 'Transcript File';
   apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    protected cdr: ChangeDetectorRef,
+  ) {}
 
   close() {
     this.createContentOpen.emit(false);
@@ -65,6 +69,7 @@ class Upload {
       })
       .subscribe({
         next: (event: HttpEvent<any>) => {
+          console.log(JSON.stringify(event));
           switch (event.type) {
             case HttpEventType.Sent:
               this.uploading = true;
@@ -72,19 +77,20 @@ class Upload {
             case HttpEventType.UploadProgress:
               if (event.total) {
                 this.uploadProgress = Math.round((100 * event.loaded) / event.total);
+                this.uploadProgressPercent = (event.loaded * 125.6) / event.total;
+                this.cdr.detectChanges();
               }
               break;
             case HttpEventType.Response:
               console.log('Upload successful', event.body);
+              this.uploading = false;
+              this.cdr.detectChanges();
               break;
           }
         },
         error: (error) => {
           console.error('Upload error', error);
-        },
-        complete: () => {
-          this.uploading = false;
-        },
+        }
       });
   }
 }
