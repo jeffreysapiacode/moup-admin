@@ -82,7 +82,6 @@ class Upload {
               }
               break;
             case HttpEventType.Response:
-              console.log('Upload successful', event.body);
               this.uploading = false;
               this.cdr.detectChanges();
               break;
