@@ -5,7 +5,7 @@
         <span class="content-view-upload-title-text">Upload an episode</span>
       </div>
       <div class="col-auto no-gutters pe-3 pt-2">
-        <div (click)="close()" class="content-view-upload-button-container p-3">
+        <div (click)="close()" class="content-view-upload-button-container p-3 d-flex justify-content-center align-items-center">
           <svg class="content-view-upload-button-close-svg" width="55" height="55" viewBox="0 0 55 55" fill="none"
                xmlns="http://www.w3.org/2000/svg">
             <path
@@ -107,8 +107,8 @@
         <div class="col-auto no-gutters me-4">
           <div class="content-view-upload-progress-animation">
             <svg width="60" height="60" viewBox="0 0 50 50">
-              <circle cx="25" cy="25" r="20" fill="none" stroke="#EBE8DC" stroke-width="4"></circle>
-              <circle cx="25" cy="25" r="20" fill="none" stroke="#6A675B" stroke-width="4" stroke-linecap="square" stroke-dasharray="125.6" [attr.stroke-dashoffset]="this.uploadProgressPercent">
+              <circle cx="25" cy="25" r="20" fill="none" stroke="#6A675B" stroke-width="4"></circle>
+              <circle cx="25" cy="25" r="20" fill="none" stroke="#EBE8DC" stroke-width="4" stroke-linecap="square" stroke-dasharray="125.6" [attr.stroke-dashoffset]="this.uploadProgressPercent">
               </circle>
             </svg>
           </div>
