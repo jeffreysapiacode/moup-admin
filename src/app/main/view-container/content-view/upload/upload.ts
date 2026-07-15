@@ -53,6 +53,9 @@ class Upload {
 
   upload() {
     if (this.uploading) return;
+    if (!this.formData.title || !this.formData.description || !this.selectedAudioFile) {
+      return;
+    }
     const formData = new FormData();
     formData.append('title', this.formData.title);
     formData.append('description', this.formData.description);
@@ -69,7 +72,6 @@ class Upload {
       })
       .subscribe({
         next: (event: HttpEvent<any>) => {
-          console.log(JSON.stringify(event));
           switch (event.type) {
             case HttpEventType.Sent:
               this.uploading = true;

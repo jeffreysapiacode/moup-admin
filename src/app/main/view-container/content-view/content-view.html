@@ -1,19 +1,39 @@
 <div class="position-relative h-100">
-  <div class="container-fluid h-100 no-gutters">
-    <div class="row h-100 no-gutters">
-      <div class="col h-100 no-gutters pt-3 ps-4">
-        <span class="content-view-title-text">Content</span>
+  <div class="container-fluid no-gutters">
+    <div class="row no-gutters">
+      <div class="col no-gutters pt-3 ps-4">
+        <span class="content-view-title-text">Select an episode</span>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col no-gutters">
+        @for (content of this.contentList; track content.uuid) {
+          <div class="content-view-content-container mx-3 mb-2 mt-3 d-flex align-items-center">
+            <div class="row no-gutters">
+              <div class="col no-gutters">
+                <span class="content-view-content-title ps-3">{{content.title}}</span>
+              </div>
+              <div class="col no-gutters">
+                <span class="content-view-content-detail ps-3">{{formatDate(content.uploadedOn)}}</span>
+              </div>
+              <div class="col no-gutters">
+                <span class="content-view-content-detail ps-3">{{formatTime(content.duration)}}</span>
+              </div>
+            </div>
+          </div>
+        }
       </div>
     </div>
   </div>
-  <div (click)="createContentOpen = true" class="content-view-button-create-content m-3 d-flex justify-content-center align-items-center">
-    <svg class="content-view-button-create-content-svg" width="54" height="54" viewBox="0 0 54 54" fill="none"
+  <!-- Upload Button -->
+  <div (click)="createContentOpen = true" class="content-view-button-upload-container m-3 d-flex justify-content-center align-items-center">
+    <svg class="content-view-button-upload-svg" width="54" height="54" viewBox="0 0 54 54" fill="none"
          xmlns="http://www.w3.org/2000/svg">
       <path d="M42.75 29.25H29.25V42.75H24.75V29.25H11.25V24.75H24.75V11.25H29.25V24.75H42.75V29.25Z" fill="#8E8B67" />
     </svg>
   </div>
-
-  <div [ngClass]="{'content-view-create-content-container-open': createContentOpen}" class="content-view-create-content-container h-100 w-100">
+  <!-- Upload Card Container -->
+  <div [ngClass]="{'content-view-upload-container-open': createContentOpen}" class="content-view-upload-container h-100 w-100">
     <app-upload (createContentOpen)="createContentOpen = false"></app-upload>
   </div>
 </div>

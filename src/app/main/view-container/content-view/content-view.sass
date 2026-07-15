@@ -1,13 +1,32 @@
 @import '../../../../styles/variables'
 
+// Title Text
 .content-view-title-text
   color: $content-view-title-text-color
   font-weight: 600
   font-size: 1.26rem
   letter-spacing: 0.05rem
 
-.content-view-button-create-content
-  background: $content-view-button-create-content-background
+// Content Container
+.content-view-content-container
+  background: $content-view-content-container-background
+  height: 60px
+
+// Content Title
+.content-view-content-title
+  color: $content-view-content-title-color
+  font-size: 1.1rem
+  font-weight: 500
+
+// Content Detail
+.content-view-content-detail
+  color: $content-view-content-detail-color
+  font-size: 1.1rem
+  font-weight: 400
+
+// Create Content Button
+.content-view-button-upload-container
+  background: $content-view-button-upload-background
   position: absolute
   right: 0
   bottom: 0
@@ -15,17 +34,17 @@
   height: 60px
   cursor: pointer
 
-.content-view-button-create-content-svg
+.content-view-button-upload-svg
   width: 35px
   height: 35px
 
-
-.content-view-create-content-container
+// Upload Card Container
+.content-view-upload-container
   position: absolute
   left: 0
   top: 0
   transform: translateX(300%)
   transition: transform 100ms ease-in
 
-.content-view-create-content-container-open
+.content-view-upload-container-open
   transform: translateX(0)

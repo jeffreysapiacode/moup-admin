@@ -1,5 +1,5 @@
 <div class="container-fluid no-gutters h-100">
-  <div class="content-view-upload-container h-100">
+  <div class="content-view-upload-container h-100 pt-2">
     <div class="row no-gutters d-flex align-items-center ms-4 pb-3">
       <div class="col no-gutters">
         <span class="content-view-upload-title-text">Upload an episode</span>
@@ -100,13 +100,13 @@
       </div>
     </div>
     <!-- Upload Progress -->
-    <div class="row no-gutters pt-3 d-flex justify-content-end align-items-center">
+    <div class="row no-gutters pt-4 d-flex justify-content-end align-items-center">
       @if (this.uploading) {
         <div class="col-auto no-gutters me-1">
           <span class="content-view-upload-progress-text">Uploading {{this.uploadProgress + '%'}}</span>
         </div>
         <div class="col-auto no-gutters me-4">
-          <div class="content-view-upload-progress-animation">
+          <div class="content-view-upload-progress-circle">
             <svg width="60" height="60" viewBox="0 0 50 50">
               <circle cx="25" cy="25" r="20" fill="none" stroke="#6A675B" stroke-width="4"></circle>
               <circle cx="25" cy="25" r="20" fill="none" stroke="#EBE8DC" stroke-width="4" stroke-linecap="square" stroke-dasharray="125.6" [attr.stroke-dashoffset]="this.uploadProgressPercent">
