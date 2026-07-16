@@ -11,12 +11,17 @@
 .content-view-content-container
   background: $content-view-content-container-background
   height: 60px
+  cursor: pointer
+  transition: background 50ms ease-in
+.content-view-content-container:hover
+  background: $content-view-content-container-background-hover
 
 // Content Title
 .content-view-content-title
   color: $content-view-content-title-color
   font-size: 1.1rem
   font-weight: 500
+  line-height: 1.3rem
 
 // Content Detail
 .content-view-content-detail
