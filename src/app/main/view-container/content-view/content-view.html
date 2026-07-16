@@ -8,7 +8,7 @@
     <div class="row no-gutters pt-2">
       <div class="col no-gutters">
         @for (content of this.contentList; track content.uuid) {
-          <div class="content-view-content-container mx-3 mb-2 mt-2 d-flex align-items-center">
+          <div (click)="handleViewDetail(content)" class="content-view-content-container mx-3 mb-2 mt-2 d-flex align-items-center">
             <div class="row no-gutters w-100">
               <div class="col no-gutters d-flex align-items-center ps-3">
                 <span class="content-view-content-title">{{content.title}}</span>
@@ -31,14 +31,18 @@
     </div>
   </div>
   <!-- Upload Button -->
-  <div (click)="createContentOpen = true" class="content-view-button-upload-container m-3 d-flex justify-content-center align-items-center">
+  <div (click)="uploadContentOpen = true" class="content-view-button-upload-container m-3 d-flex justify-content-center align-items-center">
     <svg class="content-view-button-upload-svg" width="54" height="54" viewBox="0 0 54 54" fill="none"
          xmlns="http://www.w3.org/2000/svg">
       <path d="M42.75 29.25H29.25V42.75H24.75V29.25H11.25V24.75H24.75V11.25H29.25V24.75H42.75V29.25Z" fill="#8E8B67" />
     </svg>
   </div>
   <!-- Upload Card Container -->
-  <div [ngClass]="{'content-view-upload-container-open': createContentOpen}" class="content-view-upload-container h-100 w-100">
-    <app-content-upload (createContentOpen)="createContentOpen = false"></app-content-upload>
+  <div [ngClass]="{'content-view-upload-container-open': uploadContentOpen}" class="content-view-upload-container h-100 w-100">
+    <app-content-upload (uploadContentOpen)="uploadContentOpen = false"></app-content-upload>
+  </div>
+  <!-- Content Detail Card -->
+  <div [ngClass]="{'content-view-detail-container-open': detailContentOpen}" class="content-view-detail-container h-100 w-100">
+    <app-content-detail [content]="contentDetail" (detailContentOpen)="detailContentOpen = false"></app-content-detail>
   </div>
 </div>

@@ -5,17 +5,20 @@ import { HttpClient } from '@angular/common/http';
 import moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { TimeUtils } from '../../../../util/time-utils';
+import { ContentDetail } from './content-detail/content-detail';
 
 @Component({
   selector: 'app-content-view',
-  imports: [NgClass, Upload],
+  imports: [NgClass, Upload, ContentDetail],
   templateUrl: './content-view.html',
   styleUrl: './content-view.sass',
 })
 export class ContentView implements OnInit {
   apiUrl = environment.apiUrl;
-  createContentOpen: boolean = false;
+  uploadContentOpen: boolean = false;
+  detailContentOpen: boolean = false;
   contentList: any = [];
+  contentDetail: any;
 
   constructor(
     private http: HttpClient,
@@ -41,4 +44,10 @@ export class ContentView implements OnInit {
   formatTime(seconds: any) {
     return TimeUtils.formatTime(seconds);
   }
+
+  handleViewDetail(content: any) {
+    this.detailContentOpen = true;
+    this.contentDetail = content;
+    this.cdr.detectChanges();
+  };
 }

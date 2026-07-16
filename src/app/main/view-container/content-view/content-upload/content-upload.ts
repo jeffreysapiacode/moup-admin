@@ -10,7 +10,7 @@ import { environment } from '../../../../../environments/environment';
   styleUrl: './content-upload.sass',
 })
 class Upload {
-  @Output() createContentOpen: EventEmitter<boolean> = new EventEmitter();
+  @Output() uploadContentOpen: EventEmitter<boolean> = new EventEmitter();
   uploading: boolean = false;
   uploadProgress: number = 0;
   uploadProgressPercent: number = 0;
@@ -30,7 +30,7 @@ class Upload {
   ) {}
 
   close() {
-    this.createContentOpen.emit(false);
+    this.uploadContentOpen.emit(false);
   }
 
   onAudioFileSelected($event: Event) {

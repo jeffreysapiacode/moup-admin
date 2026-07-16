@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-content-detail',
@@ -8,5 +8,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ContentDetail {
   @Input() content: any;
+  @Output() detailContentOpen: EventEmitter<boolean> = new EventEmitter();
 
+  close() {
+    this.detailContentOpen.emit(false);
+  }
 }
