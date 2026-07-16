@@ -1,14 +1,20 @@
 <div class="container-fluid no-gutters h-100">
   <div class="content-view-detail-container h-100 pt-2">
-    <div class="row no-gutters">
-      <div (click)="close()" class="col-auto no-gutters">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18.0473 20L26.2973 28.25L23.9407 30.6067L13.334 20L23.9407 9.39336L26.2973 11.75L18.0473 20Z"
-                fill="#7E7C75" />
-        </svg>
+    <div class="row no-gutters pt-2 d-flex align-items-center">
+      <div class="col-auto no-gutters ps-2 pe-2">
+        <div class="global-button-container" (click)="close()">
+          <div class="global-button-svg">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.0473 20L26.2973 28.25L23.9407 30.6067L13.334 20L23.9407 9.39336L26.2973 11.75L18.0473 20Z"
+                    fill="#7E7C75" />
+            </svg>
+          </div>
+          <div class="global-button-bloom p-3 d-flex justify-content-center align-items-center">
+          </div>
+        </div>
       </div>
       <div class="col no-gutters">
-        {{ content.title }}
+        <span class="content-view-detail-nav-title">{{ content.title }}</span>
       </div>
     </div>
     <div class="row no-gutters">

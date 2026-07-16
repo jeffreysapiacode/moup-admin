@@ -9,7 +9,7 @@ import { ContentDetail } from './content-detail/content-detail';
 
 @Component({
   selector: 'app-content-view',
-  imports: [NgClass, Upload, ContentDetail],
+  imports: [NgClass, Upload, ContentDetail, Upload],
   templateUrl: './content-view.html',
   styleUrl: './content-view.sass',
 })
@@ -49,5 +49,5 @@ export class ContentView implements OnInit {
     this.detailContentOpen = true;
     this.contentDetail = content;
     this.cdr.detectChanges();
-  };
+  }
 }

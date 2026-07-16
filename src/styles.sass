@@ -15,7 +15,7 @@ a
   padding: 0 !important
   margin: 0 !important
 
-// Text Box Styling
+// Text Box
 .text-box-container
   background: $global-text-box-container-background
   height: 55px
@@ -112,3 +112,30 @@ a
   transform: translate(-50%, -50%)
   width: 33px
   height: 33px
+
+// Close Button
+.global-button-container
+  position: relative
+  height: 60px
+  width: 60px
+.global-button-container:hover .global-button-bloom
+  transform: scale(1.7)
+
+.global-button-svg
+  position: absolute
+  cursor: pointer
+  top: 50%
+  left: 50%
+  transform: translateX(-50%) translateY(-50%)
+  z-index: 1
+
+.global-button-bloom
+  position: absolute
+  cursor: pointer
+  top: 23.35%
+  left: 23.35%
+  transform: scale(0)
+  background: $global-button-background
+  border-radius: 50px
+  z-index: 0
+  transition: transform 130ms ease-in
