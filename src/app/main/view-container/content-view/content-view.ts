@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
-import Upload from './upload/upload';
+import Upload from './content-upload/content-upload';
 import { HttpClient } from '@angular/common/http';
 import moment from 'moment';
 import { environment } from '../../../../environments/environment';

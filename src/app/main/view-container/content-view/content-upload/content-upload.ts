@@ -4,10 +4,10 @@ import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
-  selector: 'app-upload',
+  selector: 'app-content-upload',
   imports: [FormsModule],
-  templateUrl: './upload.html',
-  styleUrl: './upload.sass',
+  templateUrl: './content-upload.html',
+  styleUrl: './content-upload.sass',
 })
 class Upload {
   @Output() createContentOpen: EventEmitter<boolean> = new EventEmitter();
