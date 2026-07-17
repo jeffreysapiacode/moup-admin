@@ -1,5 +1,6 @@
 @import '../../../../../styles/variables'
 
+// Content Detail Container
 .content-view-detail-container
   background: $content-view-upload-container-background
 
@@ -14,11 +15,24 @@
 .content-view-detail-button-back
   cursor: pointer
 
-
 // Info Box
 .content-view-content-detail-info-box-container
   background: $content-view-content-detail-info-box-container-background
+  border-radius: 25px
+  cursor: pointer
+  transition: background 50ms ease-in
+.content-view-content-detail-info-box-container:hover
+  background: $content-view-content-detail-info-box-container-hover-background
 .content-view-content-detail-info-box-text
   color: $content-view-content-detail-info-box-text-color
+  line-height: 70%
+  font-size: 1.4rem
+  font-weight: 700
+  letter-spacing: 0.05rem
+  min-width: 50px
 .content-view-content-detail-info-box-highlight-text
   color: $content-view-content-detail-info-box-highlight-text-color
+  line-height: 70%
+  font-size: 1.4rem
+  font-weight: 700
+  letter-spacing: 0.05rem
