@@ -110,5 +110,40 @@
         </div>
       </div>
     </div>
+    <div class="row no-gutters">
+      <div class="col no-gutters">
+        <!-- Title Text Box -->
+        <div class="row no-gutters px-4 pt-3">
+          <div class="col no-gutters">
+            <div (click)="titleTextBox.focus()" class="text-box-container px-3 d-flex align-items-center">
+              <input
+                type="text"
+                id="title"
+                class="text-box w-100"
+                [(ngModel)]="content.title"
+                placeholder="Title"
+                #titleTextBox
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Description Text Area -->
+        <div class="row no-gutters px-4 pt-3">
+          <div class="col no-gutters">
+            <div (click)="descriptionTextBox.focus()" class="text-area-container px-3 d-flex align-items-center">
+          <textarea
+            id="description"
+            class="text-area w-100 py-3"
+            placeholder="Description"
+            rows="4"
+            cols="40"
+            [(ngModel)]="content.description"
+            #descriptionTextBox>
+          </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

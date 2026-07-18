@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import moment from 'moment';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-content-detail',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './content-detail.html',
   styleUrl: './content-detail.sass',
 })
@@ -20,7 +21,7 @@ export class ContentDetail {
     let str = value.toString();
     let count = 0;
     let newStr = '';
-    for (let i = (str.length - 1); i >= 0; i--) {
+    for (let i = str.length - 1; i >= 0; i--) {
       if (count % 3 === 0 && count > 0) {
         newStr = ',' + newStr;
       }
@@ -36,7 +37,7 @@ export class ContentDetail {
 
   formatDuration(duration: any) {
     let hours = Math.floor(duration / (60 * 60));
-    let minutes = Math.floor((duration / 60) - (hours * 60));
+    let minutes = Math.floor(duration / 60 - hours * 60);
     if (hours === 0) {
       return `${minutes} Minutes`;
     }
