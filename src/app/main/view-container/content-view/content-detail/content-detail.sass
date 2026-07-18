@@ -55,6 +55,11 @@
   transition: background 50ms ease-in
 .text-box-container-save:hover
   background: $global-text-box-text-hover-color
+.text-box-container-save:hover .text-box-container-save-svg-fill
+  fill: #666251
+
+.text-box-container-save-svg-fill
+  transition: fill 50ms ease-in
 
 .text-box-container-save-svg
   position: absolute
@@ -69,3 +74,13 @@
   font-size: 1.5rem
   font-weight: 700
   letter-spacing: 0.05rem
+  cursor: pointer
+
+// Delete Button
+.content-view-content-detail-button-delete
+  background: $content-view-content-detail-button-delete-background
+  color: $content-view-content-detail-button-delete-color
+  font-size: 1.5rem
+  font-weight: 700
+  letter-spacing: 0.05rem
+  cursor: pointer
