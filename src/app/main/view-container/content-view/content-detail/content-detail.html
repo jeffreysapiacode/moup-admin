@@ -20,12 +20,12 @@
     <div class="row no-gutters pt-2">
       <div class="col no-gutters">
         <div class="content-view-content-detail-info-box-container mx-3">
-          <div class="row no-gutters pt-3 pb-2 text-center d-flex justify-content-center">
+          <div class="row no-gutters pt-3 pb-3 text-center d-flex justify-content-center">
             <div class="col no-gutters">
               <span class="content-view-content-detail-info-box-text">Episode Download Count</span>
             </div>
           </div>
-          <div class="row no-gutters pb-2 text-center d-flex justify-content-center">
+          <div class="row no-gutters pb-3 text-center d-flex justify-content-center">
             <div class="col no-gutters">
               <span class="content-view-content-detail-info-box-highlight-text">{{ formatNumber(content?.downloadCount) }}</span>
             </div>
@@ -34,12 +34,12 @@
       </div>
       <div class="col no-gutters">
         <div class="content-view-content-detail-info-box-container me-3">
-          <div class="row no-gutters pt-3 px-3 pb-2 text-center d-flex justify-content-center">
+          <div class="row no-gutters pt-3 px-3 pb-3 text-center d-flex justify-content-center">
             <div class="col no-gutters">
               <span class="content-view-content-detail-info-box-text">Episode Like Count</span>
             </div>
           </div>
-          <div class="row no-gutters pb-2 text-center d-flex justify-content-center">
+          <div class="row no-gutters pb-3 text-center d-flex justify-content-center">
             <div class="col no-gutters">
               <span class="content-view-content-detail-info-box-highlight-text">{{ formatNumber(content?.likeCount) }}</span>
             </div>
@@ -48,12 +48,12 @@
       </div>
       <div class="col no-gutters">
         <div class="content-view-content-detail-info-box-container me-3">
-          <div class="row no-gutters pt-3 px-3 pb-2 text-center d-flex justify-content-center">
+          <div class="row no-gutters pt-3 px-3 pb-3 text-center d-flex justify-content-center">
             <div class="col no-gutters">
               <span class="content-view-content-detail-info-box-text">Episode Play Count</span>
             </div>
           </div>
-          <div class="row no-gutters pb-2 text-center d-flex justify-content-center">
+          <div class="row no-gutters pb-3 text-center d-flex justify-content-center">
             <div class="col no-gutters">
               <span class="content-view-content-detail-info-box-highlight-text">{{ formatNumber(content?.playCount) }}</span>
             </div>
@@ -127,21 +127,49 @@
               />
             </div>
           </div>
+          <div class="col-auto no-gutters ps-2">
+            <div class="text-box-container-save">
+              <svg class="text-box-container-save-svg" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.2083 27.7083V18.9583H24.7917V27.7083H27.7083V11.4158L23.5842 7.29167H7.29167V27.7083H10.2083ZM5.83333 4.375H24.7917L30.625 10.2083V29.1667C30.625 29.5534 30.4714 29.9244 30.1979 30.1979C29.9244 30.4714 29.5534 30.625 29.1667 30.625H5.83333C5.44656 30.625 5.07563 30.4714 4.80214 30.1979C4.52865 29.9244 4.375 29.5534 4.375 29.1667V5.83333C4.375 5.44656 4.52865 5.07563 4.80214 4.80214C5.07563 4.52865 5.44656 4.375 5.83333 4.375ZM13.125 21.875V27.7083H21.875V21.875H13.125Z" fill="#A09A7F"/>
+              </svg>
+            </div>
+          </div>
         </div>
         <!-- Description Text Area -->
         <div class="row no-gutters px-4 pt-3">
           <div class="col no-gutters">
             <div (click)="descriptionTextBox.focus()" class="text-area-container px-3 d-flex align-items-center">
-          <textarea
-            id="description"
-            class="text-area w-100 py-3"
-            placeholder="Description"
-            rows="4"
-            cols="40"
-            [(ngModel)]="content.description"
-            (ngModelChange)="handleContentChange()"
-            #descriptionTextBox>
-          </textarea>
+              <textarea
+                id="description"
+                class="text-area w-100 py-3"
+                placeholder="Description"
+                rows="4"
+                cols="40"
+                [(ngModel)]="content.description"
+                (ngModelChange)="handleContentChange()"
+                #descriptionTextBox>
+              </textarea>
+            </div>
+          </div>
+          <div class="col-auto no-gutters ps-2">
+            <div class="text-box-container-save">
+              <svg class="text-box-container-save-svg" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.2083 27.7083V18.9583H24.7917V27.7083H27.7083V11.4158L23.5842 7.29167H7.29167V27.7083H10.2083ZM5.83333 4.375H24.7917L30.625 10.2083V29.1667C30.625 29.5534 30.4714 29.9244 30.1979 30.1979C29.9244 30.4714 29.5534 30.625 29.1667 30.625H5.83333C5.44656 30.625 5.07563 30.4714 4.80214 30.1979C4.52865 29.9244 4.375 29.5534 4.375 29.1667V5.83333C4.375 5.44656 4.52865 5.07563 4.80214 4.80214C5.07563 4.52865 5.44656 4.375 5.83333 4.375ZM13.125 21.875V27.7083H21.875V21.875H13.125Z" fill="#A09A7F"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col no-gutters">
+            <div class="content-view-content-detail-button-reupload">
+              <div class="row no-gutters">
+                <div class="col no-gutters">
+
+                </div>
+                <div class="col no-gutters">
+
+                </div>
+              </div>
             </div>
           </div>
         </div>

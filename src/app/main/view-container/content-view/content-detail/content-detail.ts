@@ -24,11 +24,12 @@ export class ContentDetail {
   }
 
   updateContent(content: any) {
-    this.http.put(this.apiUrl + `/content/${this.content.uuid}`, content).subscribe({
-      next: (data) => {},
-      error: (err) => {},
-      complete: () => {},
-    });
+    this.http.put(this.apiUrl + `/content/${this.content.uuid}`, content)
+      .subscribe({
+        next: (data) => {},
+        error: (err) => {},
+        complete: () => {},
+      });
   }
 
   handleContentChange() {
