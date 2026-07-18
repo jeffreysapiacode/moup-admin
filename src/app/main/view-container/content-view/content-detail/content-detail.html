@@ -17,7 +17,7 @@
         <span class="content-view-detail-nav-title-text">{{ content?.title }}</span>
       </div>
     </div>
-    <div class="row no-gutters pt-3">
+    <div class="row no-gutters pt-2">
       <div class="col no-gutters">
         <div class="content-view-content-detail-info-box-container mx-3">
           <div class="row no-gutters pt-3 pb-2 text-center d-flex justify-content-center">
@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="row no-gutters pt-2">
+    <div class="row no-gutters pt-3">
       <div class="col no-gutters">
         <div class="row no-gutters">
           <div class="col no-gutters d-flex justify-content-center">
@@ -121,6 +121,7 @@
                 id="title"
                 class="text-box w-100"
                 [(ngModel)]="content.title"
+                (ngModelChange)="handleContentChange()"
                 placeholder="Title"
                 #titleTextBox
               />
@@ -138,6 +139,7 @@
             rows="4"
             cols="40"
             [(ngModel)]="content.description"
+            (ngModelChange)="handleContentChange()"
             #descriptionTextBox>
           </textarea>
             </div>

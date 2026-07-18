@@ -1,6 +1,9 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import moment from 'moment';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
+
 
 @Component({
   selector: 'app-content-detail',
@@ -11,9 +14,28 @@ import { FormsModule } from '@angular/forms';
 export class ContentDetail {
   @Input() content: any;
   @Output() detailContentOpen: EventEmitter<boolean> = new EventEmitter();
+  timeoutId: any;
+  apiUrl = environment.apiUrl;
+
+  constructor(private http: HttpClient) {}
 
   close() {
     this.detailContentOpen.emit(false);
+  }
+
+  updateContent(content: any) {
+    this.http.put(this.apiUrl + `/content/${this.content.uuid}`, content).subscribe({
+      next: (data) => {},
+      error: (err) => {},
+      complete: () => {},
+    });
+  }
+
+  handleContentChange() {
+    clearTimeout(this.timeoutId);
+    this.timeoutId = setTimeout(() => {
+      this.updateContent(this.content);
+    }, 500);
   }
 
   formatNumber(value: number) {
