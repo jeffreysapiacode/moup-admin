@@ -61,5 +61,54 @@
         </div>
       </div>
     </div>
+    <div class="row no-gutters pt-2">
+      <div class="col no-gutters">
+        <div class="row no-gutters">
+          <div class="col no-gutters d-flex justify-content-center">
+            <span class="content-view-content-detail-info-detail-text">Transcript:</span>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col no-gutters d-flex justify-content-center">
+            <span class="content-view-content-detail-info-detail-text">
+             @if (content?.transcript) {
+               True
+             }
+             @else {
+               False
+             }
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col no-gutters">
+        <div class="row no-gutters">
+          <div class="col no-gutters d-flex justify-content-center">
+            <span class="content-view-content-detail-info-detail-text">Date:</span>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col no-gutters d-flex justify-content-center">
+            <span class="content-view-content-detail-info-detail-text">
+             {{ formatDate(content?.uploadedOn) }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col no-gutters">
+        <div class="row no-gutters">
+          <div class="col no-gutters d-flex justify-content-center">
+            <span class="content-view-content-detail-info-detail-text">Duration:</span>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col no-gutters d-flex justify-content-center">
+            <span class="content-view-content-detail-info-detail-text">
+             {{ formatDuration(content?.duration) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import moment from 'moment';
 
 @Component({
   selector: 'app-content-detail',
@@ -14,7 +15,8 @@ export class ContentDetail {
     this.detailContentOpen.emit(false);
   }
 
-  formatNumber(value: string) {
+  formatNumber(value: number) {
+    if (value === null) return;
     let str = value.toString();
     let count = 0;
     let newStr = '';
@@ -26,5 +28,18 @@ export class ContentDetail {
       count++;
     }
     return newStr;
+  }
+
+  formatDate(date: any) {
+    return moment(date).format('MMMM D, YYYY');
+  }
+
+  formatDuration(duration: any) {
+    let hours = Math.floor(duration / (60 * 60));
+    let minutes = Math.floor((duration / 60) - (hours * 60));
+    if (hours === 0) {
+      return `${minutes} Minutes`;
+    }
+    return `${hours} Hours ${minutes} Minutes`;
   }
 }
