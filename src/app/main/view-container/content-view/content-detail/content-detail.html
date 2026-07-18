@@ -128,7 +128,7 @@
             </div>
           </div>
           <div class="col-auto no-gutters ps-2">
-            <div class="text-box-container-save">
+            <div class="text-box-container-save" (click)="updateContent(this.content)">
               <svg class="text-box-container-save-svg" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.2083 27.7083V18.9583H24.7917V27.7083H27.7083V11.4158L23.5842 7.29167H7.29167V27.7083H10.2083ZM5.83333 4.375H24.7917L30.625 10.2083V29.1667C30.625 29.5534 30.4714 29.9244 30.1979 30.1979C29.9244 30.4714 29.5534 30.625 29.1667 30.625H5.83333C5.44656 30.625 5.07563 30.4714 4.80214 30.1979C4.52865 29.9244 4.375 29.5534 4.375 29.1667V5.83333C4.375 5.44656 4.52865 5.07563 4.80214 4.80214C5.07563 4.52865 5.44656 4.375 5.83333 4.375ZM13.125 21.875V27.7083H21.875V21.875H13.125Z" fill="#A09A7F"/>
               </svg>
@@ -152,22 +152,24 @@
             </div>
           </div>
           <div class="col-auto no-gutters ps-2">
-            <div class="text-box-container-save">
+            <div class="text-box-container-save" (click)="updateContent(this.content)">
               <svg class="text-box-container-save-svg" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.2083 27.7083V18.9583H24.7917V27.7083H27.7083V11.4158L23.5842 7.29167H7.29167V27.7083H10.2083ZM5.83333 4.375H24.7917L30.625 10.2083V29.1667C30.625 29.5534 30.4714 29.9244 30.1979 30.1979C29.9244 30.4714 29.5534 30.625 29.1667 30.625H5.83333C5.44656 30.625 5.07563 30.4714 4.80214 30.1979C4.52865 29.9244 4.375 29.5534 4.375 29.1667V5.83333C4.375 5.44656 4.52865 5.07563 4.80214 4.80214C5.07563 4.52865 5.44656 4.375 5.83333 4.375ZM13.125 21.875V27.7083H21.875V21.875H13.125Z" fill="#A09A7F"/>
               </svg>
             </div>
           </div>
         </div>
-        <div class="row no-gutters">
-          <div class="col no-gutters">
+        <div class="row no-gutters py-3 ps-4">
+          <div class="col-auto no-gutters">
             <div class="content-view-content-detail-button-reupload">
               <div class="row no-gutters">
-                <div class="col no-gutters">
-
+                <div class="col-auto ps-4 py-3 d-flex align-items-center">
+                  Re-Upload
                 </div>
-                <div class="col no-gutters">
-
+                <div class="col no-gutters pe-4 d-flex align-items-center">
+                  <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.625 30V14.7187L15.75 19.5937L13.125 16.875L22.5 7.5L31.875 16.875L29.25 19.5937L24.375 14.7187V30H20.625ZM7.5 37.5V28.125H11.25V33.75H33.75V28.125H37.5V37.5H7.5Z" fill="#887F2A"/>
+                  </svg>
                 </div>
               </div>
             </div>

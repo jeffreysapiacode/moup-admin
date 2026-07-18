@@ -33,10 +33,7 @@ export class ContentDetail {
   }
 
   handleContentChange() {
-    clearTimeout(this.timeoutId);
-    this.timeoutId = setTimeout(() => {
-      this.updateContent(this.content);
-    }, 500);
+
   }
 
   formatNumber(value: number) {
