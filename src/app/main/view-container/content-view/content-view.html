@@ -5,33 +5,35 @@
         <span class="content-view-title-text">Select an episode</span>
       </div>
     </div>
-    <div class="row no-gutters pt-2">
-      <div class="col no-gutters">
-        @for (content of this.contentList; track content.uuid) {
-          <div (click)="handleViewDetail(content)" class="content-view-content-container mx-3 mb-2 mt-2 d-flex align-items-center">
-            <div class="row no-gutters w-100">
-              <div class="col no-gutters d-flex align-items-center ps-3">
-                <span class="content-view-content-title">{{content.title}}</span>
-              </div>
-              <div class="col no-gutters ps-5 d-flex justify-content-start align-items-center">
-                <span class="content-view-content-detail-text ps-3 text-start">{{formatTime(content.duration)}}</span>
-              </div>
-              <div class="col no-gutters d-flex justify-content-start align-items-center">
-                <span class="content-view-content-detail-text ps-3">{{formatDate(content.uploadedOn)}}</span>
-              </div>
-              <div class="col-auto no-gutters pe-3 d-flex justify-content-end align-items-center">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.2098 17.5001L11.9911 10.2813L14.0532 8.21924L23.334 17.5001L14.0532 26.7809L11.9911 24.7188L19.2098 17.5001Z" fill="#918B68"/>
-                </svg>
+    <div class="scroll-container mb-5">
+      <div class="row no-gutters pt-2">
+        <div class="col no-gutters">
+          @for (content of this.contentList; track content.uuid) {
+            <div (click)="handleViewDetail(content)" class="content-view-content-container mx-3 mb-2 mt-2 d-flex align-items-center">
+              <div class="row no-gutters w-100">
+                <div class="col no-gutters d-flex align-items-center ps-3">
+                  <span class="content-view-content-title">{{content.title}}</span>
+                </div>
+                <div class="col no-gutters ps-5 d-flex justify-content-start align-items-center">
+                  <span class="content-view-content-detail-text ps-3 text-start">{{formatTime(content.duration)}}</span>
+                </div>
+                <div class="col no-gutters d-flex justify-content-start align-items-center">
+                  <span class="content-view-content-detail-text ps-3">{{formatDate(content.uploadedOn)}}</span>
+                </div>
+                <div class="col-auto no-gutters pe-3 d-flex justify-content-end align-items-center">
+                  <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.2098 17.5001L11.9911 10.2813L14.0532 8.21924L23.334 17.5001L14.0532 26.7809L11.9911 24.7188L19.2098 17.5001Z" fill="#918B68"/>
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
-        }
+          }
+        </div>
       </div>
     </div>
   </div>
   <!-- Upload Button -->
-  <div (click)="uploadContentOpen = true" class="content-view-button-upload-container m-3 d-flex justify-content-center align-items-center">
+  <div (click)="uploadContentOpen = true; this.cdr.detectChanges();" class="content-view-button-upload-container m-3 d-flex justify-content-center align-items-center">
     <svg class="content-view-button-upload-svg" width="54" height="54" viewBox="0 0 54 54" fill="none"
          xmlns="http://www.w3.org/2000/svg">
       <path d="M42.75 29.25H29.25V42.75H24.75V29.25H11.25V24.75H24.75V11.25H29.25V24.75H42.75V29.25Z" fill="#8E8B67" />
@@ -43,6 +45,6 @@
   </div>
   <!-- Content Detail Card -->
   <div [ngClass]="{'content-view-detail-container-open': detailContentOpen}" class="content-view-detail-container h-100 w-100">
-    <app-content-detail [content]="contentDetail" (detailContentOpen)="detailContentOpen = false"></app-content-detail>
+    <app-content-detail [content]="contentDetail" [loading]="loadingDetail" (detailContentOpen)="detailContentOpen = false"></app-content-detail>
   </div>
 </div>

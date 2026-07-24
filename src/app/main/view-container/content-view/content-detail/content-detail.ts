@@ -12,28 +12,21 @@ import { environment } from '../../../../../environments/environment';
   styleUrl: './content-detail.sass',
 })
 export class ContentDetail {
-  @Input() content: any;
+  @Input() content?: any;
+  @Input() loading: boolean = false;
   @Output() detailContentOpen: EventEmitter<boolean> = new EventEmitter();
-  timeoutId: any;
   apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
-  close() {
-    this.detailContentOpen.emit(false);
-  }
-
   updateContent(content: any) {
-    this.http.put(this.apiUrl + `/content/${this.content.uuid}`, content)
-      .subscribe({
-        next: (data) => {},
-        error: (err) => {},
-        complete: () => {},
-      });
-  }
-
-  handleContentChange() {
-
+    this.http.put(this.apiUrl + `/content/${this.content.uuid}`, content).subscribe({
+      next: (data) => {
+        this.content = data;
+      },
+      error: (err) => {},
+      complete: () => {},
+    });
   }
 
   formatNumber(value: number) {
@@ -62,5 +55,19 @@ export class ContentDetail {
       return `${minutes} Minutes`;
     }
     return `${hours} Hours ${minutes} Minutes`;
+  }
+
+  handleTitleChange($event: any) {
+    this.content.title = $event;
+    this.updateContent(this.content);
+  }
+
+  handleDescriptionChange($event: any) {
+    this.content.description = $event;
+    this.updateContent(this.content);
+  }
+
+  close() {
+    this.detailContentOpen.emit(false);
   }
 }

@@ -9,7 +9,7 @@ import { ContentDetail } from './content-detail/content-detail';
 
 @Component({
   selector: 'app-content-view',
-  imports: [NgClass, Upload, ContentDetail, Upload],
+  imports: [NgClass, Upload, ContentDetail, Upload, Upload],
   templateUrl: './content-view.html',
   styleUrl: './content-view.sass',
 })
@@ -18,7 +18,9 @@ export class ContentView implements OnInit {
   uploadContentOpen: boolean = false;
   detailContentOpen: boolean = false;
   contentList: any = [];
-  contentDetail: any;
+  contentDetail?: any;
+  loading: boolean = false;
+  loadingDetail: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -47,7 +49,17 @@ export class ContentView implements OnInit {
 
   handleViewDetail(content: any) {
     this.detailContentOpen = true;
-    this.contentDetail = content;
+    this.loadingDetail = true;
     this.cdr.detectChanges();
+    this.http.get(this.apiUrl + `/content/${content.uuid}`).subscribe({
+      next: (data) => {
+        this.contentDetail = data;
+      },
+      error: (err) => {},
+      complete: () => {
+        this.loadingDetail = false;
+        this.cdr.detectChanges();
+      },
+    });
   }
 }
