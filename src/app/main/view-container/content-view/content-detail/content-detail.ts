@@ -3,6 +3,7 @@ import moment from 'moment';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { EventBus } from '../../../../service/event-bus';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ContentDetail {
   @Output() detailContentOpen: EventEmitter<boolean> = new EventEmitter();
   apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private eventBus: EventBus) { }
 
   updateContent(content: any) {
     this.http.put(this.apiUrl + `/content/${this.content.uuid}`, content).subscribe({
@@ -68,6 +70,7 @@ export class ContentDetail {
   }
 
   close() {
+    this.eventBus.onRefresh.emit();
     this.detailContentOpen.emit(false);
   }
 }

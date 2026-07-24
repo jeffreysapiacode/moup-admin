@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Output, ViewChild } from '@
 import { FormGroup, FormsModule } from '@angular/forms';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { EventBus } from '../../../../service/event-bus';
 
 @Component({
   selector: 'app-content-upload',
@@ -27,11 +28,8 @@ class Upload {
   constructor(
     private http: HttpClient,
     protected cdr: ChangeDetectorRef,
+    private eventBus: EventBus
   ) {}
-
-  close() {
-    this.uploadContentOpen.emit(false);
-  }
 
   onAudioFileSelected($event: Event) {
     const element = $event.currentTarget as HTMLInputElement;
@@ -84,15 +82,22 @@ class Upload {
               }
               break;
             case HttpEventType.Response:
+              this.eventBus.onRefresh.emit();
               this.uploading = false;
+              this.close();
               this.cdr.detectChanges();
               break;
           }
         },
         error: (error) => {
           console.error('Upload error', error);
-        }
+        },
+        complete: () => {}
       });
+  }
+
+  close() {
+    this.uploadContentOpen.emit(false);
   }
 }
 

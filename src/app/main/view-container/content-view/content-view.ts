@@ -6,6 +6,7 @@ import moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { TimeUtils } from '../../../../util/time-utils';
 import { ContentDetail } from './content-detail/content-detail';
+import { EventBus } from '../../../service/event-bus';
 
 @Component({
   selector: 'app-content-view',
@@ -25,9 +26,18 @@ export class ContentView implements OnInit {
   constructor(
     private http: HttpClient,
     protected cdr: ChangeDetectorRef,
+    private eventBus: EventBus
   ) {}
 
   ngOnInit(): void {
+    this.getContentList();
+    this.eventBus.onRefresh.subscribe(() => {
+      this.getContentList();
+    });
+  }
+
+  getContentList() {
+    this.loading = true;
     this.http.get(this.apiUrl + '/content').subscribe({
       next: (response) => {
         this.contentList = response;
@@ -36,6 +46,9 @@ export class ContentView implements OnInit {
       error: (error) => {
         console.error('Get error', error);
       },
+      complete: () => {
+        this.loading = false;
+      }
     });
   }
 
