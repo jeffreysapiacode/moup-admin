@@ -69,6 +69,17 @@ export class ContentDetail {
     this.updateContent(this.content);
   }
 
+  delete() {
+    this.http.delete(this.apiUrl + `/content/${this.content.uuid}`)
+      .subscribe({
+        next: (data) => {
+          this.close();
+        },
+        error: (err) => {},
+        complete: () => {},
+      });
+  }
+
   close() {
     this.eventBus.onRefresh.emit();
     this.detailContentOpen.emit(false);
