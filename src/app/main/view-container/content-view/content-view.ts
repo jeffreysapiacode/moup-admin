@@ -66,8 +66,10 @@ export class ContentView implements OnInit {
     this.cdr.detectChanges();
     this.http.get(this.apiUrl + `/content/${content.uuid}`).subscribe({
       next: (data) => {
-        this.contentDetail = data;
-        this.cdr.detectChanges();
+        setTimeout(()=>{
+          this.contentDetail = data;
+          this.cdr.detectChanges();
+        });
       },
       error: (err) => {},
       complete: () => {
