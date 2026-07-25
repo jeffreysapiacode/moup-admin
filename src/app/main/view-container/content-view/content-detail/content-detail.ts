@@ -17,6 +17,7 @@ export class ContentDetail {
   @Input() loading: boolean = false;
   @Output() detailContentOpen: EventEmitter<boolean> = new EventEmitter();
   apiUrl = environment.apiUrl;
+  deleting: boolean = false;
 
   constructor(private http: HttpClient,
               private eventBus: EventBus) { }
@@ -70,13 +71,19 @@ export class ContentDetail {
   }
 
   delete() {
+    if (this.deleting) {
+      return;
+    }
+    this.deleting = true;
     this.http.delete(this.apiUrl + `/content/${this.content.uuid}`)
       .subscribe({
         next: (data) => {
           this.close();
         },
         error: (err) => {},
-        complete: () => {},
+        complete: () => {
+          this.deleting = false;
+        },
       });
   }
 
