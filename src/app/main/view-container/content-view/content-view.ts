@@ -10,7 +10,7 @@ import { EventBus } from '../../../service/event-bus';
 
 @Component({
   selector: 'app-content-view',
-  imports: [NgClass, Upload, ContentDetail, Upload, Upload],
+  imports: [NgClass, Upload, ContentDetail, Upload, Upload, Upload],
   templateUrl: './content-view.html',
   styleUrl: './content-view.sass',
 })
@@ -26,7 +26,7 @@ export class ContentView implements OnInit {
   constructor(
     private http: HttpClient,
     protected cdr: ChangeDetectorRef,
-    private eventBus: EventBus
+    private eventBus: EventBus,
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class ContentView implements OnInit {
       },
       complete: () => {
         this.loading = false;
-      }
+      },
     });
   }
 

@@ -151,7 +151,7 @@
                 placeholder="Description"
                 rows="4"
                 cols="40"
-                [ngModel]="content.description"
+                [ngModel]="content?.description"
                 (ngModelChange)="handleDescriptionChange($event)"
                 #descriptionTextBox>
               </textarea>
