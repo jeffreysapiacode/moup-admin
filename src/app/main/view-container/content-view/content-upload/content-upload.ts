@@ -15,7 +15,7 @@ class Upload {
   uploading: boolean = false;
   uploadProgress: number = 0;
   uploadProgressPercent: number = 0;
-  selectedAudioFile: File | undefined;
+  selectedAudioFile?: File;
   selectedTranscriptFile?: File;
   formData = {
     title: '',
@@ -84,6 +84,7 @@ class Upload {
             case HttpEventType.Response:
               this.eventBus.onRefresh.emit();
               this.uploading = false;
+              this.reset();
               this.close();
               this.cdr.detectChanges();
               break;
@@ -94,6 +95,17 @@ class Upload {
         },
         complete: () => {}
       });
+  }
+
+  reset() {
+    this.selectedAudioFile = undefined;
+    this.selectedTranscriptFile = undefined;
+    this.formData = {
+      title: '',
+      description: '',
+    };
+    this.audioFileLabel = 'Audio File';
+    this.transcriptFileLabel = 'Transcript File';
   }
 
   close() {
