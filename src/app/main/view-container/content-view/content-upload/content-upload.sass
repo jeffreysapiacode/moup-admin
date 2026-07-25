@@ -4,6 +4,17 @@
 .content-view-upload-container
   background: $content-view-upload-container-background
 
+// Scroll Container
+.scroll-container
+  position: relative
+  overflow-y: scroll
+  height: calc(100dvh - 140px)
+  width: 100%
+  scrollbar-width: none
+  -ms-overflow-style: none
+.scroll-container::-webkit-scrollbar
+  display: none
+
 // Title Text
 .content-view-upload-title-text
   color: $content-view-upload-title-text-color
