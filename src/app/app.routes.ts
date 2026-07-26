@@ -11,5 +11,5 @@ export const routes: Routes = [
   { path: 'statistics', component: StatisticsView },
   { path: 'transcript', component: TranscriptView },
   { path: 'settings', component: SettingsView },
-  // { path: '**', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', redirectTo: '/content', pathMatch: 'full' },
 ];
